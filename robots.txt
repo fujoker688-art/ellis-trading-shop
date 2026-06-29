@@ -1,0 +1,33 @@
+# robots.txt for ellis-trading.shop
+# Allows all major search engine crawlers
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /category.html
+Allow: /product.html
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /data/
+
+# Sitemap location
+Sitemap: https://ellis-trading.shop/sitemap.xml
+
+# Disallow admin/internal paths (if any)
+Disallow: /admin/
+Disallow: /*?sort=
+Disallow: /*&page=
+
+# Google bot specific
+User-agent: Googlebot
+Allow: /
+Allow: /category.html
+Allow: /product.html
+
+# Allow image indexing
+User-agent: Googlebot-Image
+Allow: /
+
+# Crawl delay for polite crawling
+Crawl-delay: 1

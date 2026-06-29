@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build output
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# IDE
+.vscode/
+.idea/
+
+# Env
+.env
+
+# Data caches
+data/*.json
+
+# Generated sitemap (keep the generated one, not the generator)
+# sitemap.xml is committed manually
+
+# Debug images
+data/debug*.png

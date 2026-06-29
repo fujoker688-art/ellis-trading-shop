@@ -1,0 +1,33 @@
+# Security & SEO Headers for GitHub Pages / ellis-trading.shop
+
+# HSTS — enforce HTTPS for 1 year, include subdomains
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# Content Security Policy
+Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src https://www.speedmalls.com https://images.unsplash.com data: https://ellis-trading.shop; connect-src 'self'; frame-ancestors 'none'
+
+# Prevent MIME-type sniffing
+X-Content-Type-Options: nosniff
+
+# Clickjacking protection
+X-Frame-Options: DENY
+
+# Referrer policy
+Referrer-Policy: strict-origin-when-cross-origin
+
+# Permissions policy
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Cache control for static assets (1 year)
+/cache-control
+/: max-age=0, must-revalidate
+*.html: no-cache, must-revalidate
+css/*.css: max-age=31536000, immutable
+js/*.js: max-age=31536000, immutable
+images/*: max-age=31536000, immutable
+*.xml: no-cache
+
+# Cross-Origin Embedder Policy
+Cross-Origin-Embedder-Policy: require-corp
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin

@@ -1,0 +1,15 @@
+{
+  "name": "ellis-trading-shop",
+  "version": "1.0.0",
+  "description": "Premium Wine & Beauty E-Commerce — ellis-trading.shop",
+  "private": true,
+  "scripts": {
+    "lint": "npx eslint . --ext .js",
+    "test": "node test/qa.js",
+    "build": "node scripts/build.js",
+    "serve": "npx serve . -l 3000"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

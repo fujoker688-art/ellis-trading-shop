@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Dynamic meta tags — populated by JS -->
+    <title id="seo-title">Product — Vino & Beauté</title>
+    <meta name="description" id="seo-description" content="Shop premium products at Vino & Beauté.">
+    <meta name="keywords" id="seo-keywords" content="wine, beauty, skincare, fragrance, luxury">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" id="seo-canonical" href="https://ellis-trading.shop/category.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" id="seo-og-url" content="https://ellis-trading.shop/">
+    <meta property="og:title" id="seo-og-title" content="Product — Vino & Beauté">
+    <meta property="og:description" id="seo-og-desc" content="Shop premium products at Vino & Beauté.">
+    <meta property="og:image" id="seo-og-image" content="https://ellis-trading.shop/images/og-home.jpg">
+    <meta property="og:site_name" content="Vino & Beauté">
+    <meta property="og:locale" content="en_HK">
+
+    <!-- Product OG properties -->
+    <meta property="product:price:amount" content="0">
+    <meta property="product:price:currency" content="HKD">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="seo-tw-title" content="Product — Vino & Beauté">
+    <meta name="twitter:description" id="seo-tw-desc" content="Shop premium products at Vino & Beauté.">
+    <meta name="twitter:image" id="seo-tw-image" content="https://ellis-trading.shop/images/og-home.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/seo.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header__inner">
+                <a href="/" class="logo" aria-label="Vino & Beauté Home">
+                    <span class="logo__mark">V</span>
+                    <span class="logo__text">Vino & Beauté</span>
+                </a>
+                <nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                        <li class="nav__item nav__item--dropdown">
+                            <a href="/category.html?cId=7" class="nav__link">Wines</a>
+                            <div class="dropdown" role="menu">
+                                <a href="/category.html?cId=7&amp;csubId=14" class="dropdown__link" role="menuitem">Red Wines</a>
+                                <a href="/category.html?cId=7&amp;csubId=15" class="dropdown__link" role="menuitem">White Wines</a>
+                            </div>
+                        </li>
+                        <li class="nav__item"><a href="/category.html?cId=2" class="nav__link">Beauty</a></li>
+                        <li class="nav__item"><a href="/" class="nav__link">Brands</a></li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+                    <button class="search-toggle" aria-label="Search" onclick="toggleSearch()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M14 14l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </button>
+                    <button class="cart-btn" aria-label="Shopping cart" onclick="toggleCart()" aria-haspopup="dialog">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 1h2l1 4m0 0h10l-1.5 7H5.5L3 5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="17" r="1" stroke="currentColor" stroke-width="1.5"/><circle cx="14" cy="17" r="1" stroke="currentColor" stroke-width="1.5"/></svg>
+                        <span class="cart-count" id="cartCount" aria-live="polite">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <div class="product-detail">
+            <div class="container">
+                <!-- Breadcrumb -->
+                <nav aria-label="Breadcrumb" id="productBreadcrumb" class="breadcrumb">
+                    <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display:flex;gap:8px;flex-wrap:wrap;margin:0;padding:0;list-style:none;">
+                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
+                            <meta itemprop="position" content="1" />
+                        </li>
+                        <li class="breadcrumb__separator" aria-hidden="true">›</li>
+                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <a itemprop="item" href="/category.html"><span itemprop="name">Products</span></a>
+                            <meta itemprop="position" content="2" />
+                        </li>
+                        <li class="breadcrumb__separator" aria-hidden="true">›</li>
+                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <span itemprop="name" id="breadcrumb-product-name">Product</span>
+                            <meta itemprop="position" content="3" />
+                        </li>
+                    </ol>
+                </nav>
+
+                <div class="product-detail__inner" id="productDetail">
+                    <p style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--color-text-muted);">Loading product...</p>
+                </div>
+
+                <!-- Related products section (internal linking) -->
+                <section class="related-products" aria-labelledby="related-heading" style="margin-top:60px;">
+                    <h2 class="section__title" id="related-heading">You May Also Like</h2>
+                    <div class="products__grid" id="relatedProducts">
+                        <!-- Dynamically loaded -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__col">
+                    <h4 class="footer__heading">Vino &amp; Beauté</h4>
+                    <p class="footer__text">Premium wines, spirits, and beauty products curated for discerning tastes.</p>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__heading">Shop</h4>
+                    <ul class="footer__links">
+                        <li><a href="/category.html?cId=7&amp;csubId=14">Red Wines</a></li>
+                        <li><a href="/category.html?cId=7&amp;csubId=15">White Wines</a></li>
+                        <li><a href="/category.html?cId=2">Beauty</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__heading">Customer Service</h4>
+                    <ul class="footer__links">
+                        <li><a href="/">FAQ</a></li>
+                        <li><a href="/">Shipping</a></li>
+                        <li><a href="/">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__heading">Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" rel="noopener noreferrer">Instagram</a>
+                        <a href="#" class="social-link" rel="noopener noreferrer">Facebook</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Vino &amp; Beauté — ellis-trading.shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cart-sidebar" id="cartSidebar" role="dialog" aria-label="Shopping cart">
+        <div class="cart-sidebar__header">
+            <h3>Shopping Cart</h3>
+            <button onclick="toggleCart()" aria-label="Close cart">✕</button>
+        </div>
+        <div class="cart-sidebar__items" id="cartItems">
+            <p class="cart-empty">Your cart is empty</p>
+        </div>
+        <div class="cart-sidebar__footer">
+            <div class="cart-total"><span>Total:</span><span id="cartTotal">HK$0</span></div>
+            <button class="btn btn--primary btn--full">Checkout</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="toggleCart()" role="presentation"></div>
+
+    <script src="js/products.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const dpId = params.get('dpId');
+
+            const check = setInterval(() => {
+                if (Store.products.length > 0) {
+                    clearInterval(check);
+                    const product = Store.products.find(p => p.dpId == dpId);
+                    const container = document.getElementById('productDetail');
+                    const relatedContainer = document.getElementById('relatedProducts');
+
+                    if (product) {
+                        // --- Dynamic SEO meta tags ---
+                        const catLabel = product.categoryLabel || '';
+                        const subCatLabel = product.subCategoryLabel || '';
+                        const productName = product.name || 'Product';
+                        const brandName = product.brand || '';
+                        const desc = product.description || `Buy ${productName} at Vino & Beauté. ${brandName ? brandName + '. ' : ''}${catLabel}${subCatLabel ? ' — ' + subCatLabel : ''}. Starting at HK$${(product.price||0).toLocaleString()}.`;
+
+                        // Update all SEO meta tags
+                        document.getElementById('seo-title').textContent = `${productName} — ${catLabel || 'Product'} | Vino & Beauté`;
+                        document.getElementById('seo-description').setAttribute('content', desc.substring(0, 160));
+                        document.getElementById('seo-canonical').setAttribute('href', `https://ellis-trading.shop/product.html?dpId=${product.dpId}`);
+                        document.getElementById('seo-og-url').setAttribute('content', `https://ellis-trading.shop/product.html?dpId=${product.dpId}`);
+                        document.getElementById('seo-og-title').setAttribute('content', `${productName} — Vino & Beauté`);
+                        document.getElementById('seo-og-desc').setAttribute('content', desc.substring(0, 160));
+                        document.getElementById('seo-og-image').setAttribute('content', product.image || 'https://ellis-trading.shop/images/og-home.jpg');
+                        document.getElementById('seo-tw-title').setAttribute('content', `${productName} — Vino & Beauté`);
+                        document.getElementById('seo-tw-desc').setAttribute('content', desc.substring(0, 160));
+                        document.getElementById('seo-tw-image').setAttribute('content', product.image || 'https://ellis-trading.shop/images/og-home.jpg');
+                        document.getElementById('seo-og-url').setAttribute('content', `https://ellis-trading.shop/product.html?dpId=${product.dpId}`);
+
+                        // Set OG price
+                        const ogPrice = document.querySelector('meta[property="product:price:amount"]');
+                        if (ogPrice) ogPrice.setAttribute('content', String(product.price || 0));
+
+                        // Update breadcrumb
+                        const bcName = document.getElementById('breadcrumb-product-name');
+                        if (bcName) bcName.textContent = productName;
+
+                        // Build product detail with semantic HTML
+                        container.innerHTML = `
+                            <figure class="product-gallery">
+                                <img class="product-detail__image"
+                                     src="${product.image || 'https://via.placeholder.com/600x600/1a1423/9a93b0?text=No+Image'}"
+                                     alt="${productName}${brandName ? ' by ' + brandName : ''}"
+                                     width="600" height="600"
+                                     loading="eager"
+                                     fetchpriority="high"
+                                     id="mainProductImage">
+                                ${product.allImages && product.allImages.length > 1 ? `
+                                    <figcaption class="sr-only">${productName} — ${product.allImages.length} images</figcaption>
+                                    <div class="product-gallery__thumbs" style="display:flex;gap:8px;margin-top:12px;overflow-x:auto;">
+                                        ${product.allImages.slice(0, 4).map((img, i) => `
+                                            <img src="${img}" alt="${productName} view ${i+1}" width="120" height="120"
+                                                 loading="lazy" style="border-radius:8px;cursor:pointer;border:2px solid transparent;"
+                                                 onclick="document.getElementById('mainProductImage').src=this.src;this.style.borderColor='var(--color-primary)'"
+                                                 onerror="this.style.display='none'">
+                                        `).join('')}
+                                    </div>
+                                ` : ''}
+                            </figure>
+                            <article class="product-info">
+                                ${brandName ? `<p class="product-detail__brand">${brandName}</p>` : ''}
+                                <h1 class="product-detail__name">${productName}</h1>
+                                ${subCatLabel ? `<p class="product-detail__category" style="color:var(--color-text-muted);font-size:0.9rem;margin-bottom:8px;">${catLabel}${subCatLabel ? ' › ' + subCatLabel : ''}</p>` : ''}
+                                <p class="product-detail__price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    HK$<span itemprop="price" content="${product.price || 0}">${(product.price || 0).toLocaleString()}</span>
+                                    <meta itemprop="priceCurrency" content="HKD">
+                                    <meta itemprop="availability" content="https://schema.org/InStock">
+                                </p>
+
+                                ${product.description ? `
+                                    <div class="product-detail__desc" itemprop="description">
+                                        ${product.description.replace(/\n/g, '<br>')}
+                                    </div>
+                                ` : '<p class="product-detail__desc">Premium quality product from our curated collection.</p>'}
+
+                                <div class="product-cta" style="display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;">
+                                    <button class="btn btn--primary" onclick='Store.addToCart(${JSON.stringify(product).replace(/"/g,'&quot;')}); toggleCart();'>Add to Cart</button>
+                                    <a href="/category.html?cId=${product.categoryId || 2}" class="btn btn--outline">View Similar</a>
+                                </div>
+
+                                <!-- Structured data rendered inline for this product -->
+                                <script type="application/ld+json" id="product-schema">
+                                {
+                                    "@context": "https://schema.org",
+                                    "@type": "${product.categoryId == 7 ? 'WineAlcoholic' : 'BeautyProduct'}",
+                                    "name": "${productName.replace(/"/g, '\\"')}",
+                                    "description": "${(product.description || '').replace(/"/g, '\\"').substring(0, 200)}",
+                                    "brand": {
+                                        "@type": "Brand",
+                                        "name": "${brandName || 'Vino & Beauté'}"
+                                    },
+                                    "image": "${product.image || ''}",
+                                    "sku": "${product.pId || product.dpId}",
+                                    "mpn": "${product.dpId}",
+                                    "offers": {
+                                        "@type": "Offer",
+                                        "url": "https://ellis-trading.shop/product.html?dpId=${product.dpId}",
+                                        "priceCurrency": "HKD",
+                                        "price": "${product.price || 0}",
+                                        "availability": "https://schema.org/InStock",
+                                        "seller": {
+                                            "@type": "Organization",
+                                            "name": "Vino & Beauté"
+                                        }
+                                    },
+                                    "category": "${subCatLabel || catLabel || 'Product'}"
+                                }
+                                </script>
+                            </article>
+                        `;
+
+                        // Related products (same category, exclude current)
+                        if (relatedContainer) {
+                            const related = Store.products
+                                .filter(p => p.categoryId === product.categoryId && p.dpId != product.dpId)
+                                .slice(0, 8);
+                            relatedContainer.innerHTML = related.map(p => createProductCard(p)).join('');
+                        }
+
+                    } else {
+                        container.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--color-text-muted)">Product not found</p>';
+                    }
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>
