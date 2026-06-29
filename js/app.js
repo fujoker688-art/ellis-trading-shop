@@ -253,6 +253,24 @@ document.querySelector('.hero')?.addEventListener('mouseleave', () => {
 // =============================================
 // Init
 // =============================================
+
+function handleCheckout() {
+    if (Store.cart.length === 0) {
+        alert('Your cart is empty. Add some products first!');
+        return;
+    }
+    const total = Store.getCartTotal();
+    alert(`Thank you for your order totaling HK$${total.toLocaleString()}!\n\nFor now, please email us at hello@ellis-trading.shop or call +852 2123 4567 to complete your purchase.\n\nWe'll confirm availability and arrange delivery.`);
+    toggleCart();
+}
+
+function toggleCart() {
+    const sidebar = document.getElementById('cartSidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initSlider();
 

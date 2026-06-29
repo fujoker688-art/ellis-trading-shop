@@ -2238,4 +2238,20 @@
       <image:title>Anti-Hair Loss Detox Shampoo</image:title>
     </image:image>
   </url>
+
+    <url>
+        <loc>https://ellis-trading.shop/contact.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ellis-trading.shop/delivery.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ellis-trading.shop/about.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset>

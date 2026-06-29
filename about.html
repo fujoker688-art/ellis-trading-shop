@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — Vino & Beauté | ellis-trading.shop</title>
+    <meta name="description" content="Learn about Vino & Beauté — our story, mission, and commitment to bringing the finest European wines and luxury beauty products to Hong Kong.">
+    <link rel="canonical" href="https://ellis-trading.shop/about.html">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/seo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About Us — Vino & Beauté",
+        "description": "Our story and mission to bring the finest European wines and luxury beauty products to Hong Kong.",
+        "url": "https://ellis-trading.shop/about.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Vino & Beauté",
+            "url": "https://ellis-trading.shop"
+        }
+    }
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="Vino & Beauté home">
+                <span class="logo__icon">🍷</span>
+                <span class="logo__text">Vino &amp; Beauté</span>
+            </a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="category.html?cId=7&amp;csubId=14">Red Wines</a>
+                <a href="category.html?cId=7&amp;csubId=15">White Wines</a>
+                <a href="category.html?cId=2">Beauty</a>
+                <a href="category.html?cId=1">Wellness</a>
+                <a href="about.html" class="active" aria-current="page">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <button class="cart-btn" onclick="toggleCart()" aria-label="Open cart">
+                🛒 <span id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Our Story</h1>
+                <p>Bridging Europe's finest traditions with Hong Kong's vibrant lifestyle.</p>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h2>Founded with Passion</h2>
+                        <p>Vino &amp; Beauté was born from a simple belief: that the extraordinary wines of Europe and the luxury beauty products of France deserve to be accessible to everyone in Hong Kong.</p>
+                        <p>Our founders spent years traveling through Bordeaux, Burgundy, and Champagne — tasting, learning, and building relationships with vineyards and artisans who share our passion for excellence.</p>
+                        <p>Today, we curate a collection of over 200 premium products, from the distinguished Henri de Malrome wines to the luxurious beauty lines of Estebel, Senbel, and Vigne Royale.</p>
+                    </div>
+                    <div class="about-image">
+                        <div class="about-placeholder" style="background: linear-gradient(135deg, var(--color-bg-card), var(--color-bg-alt)); border-radius: var(--radius); padding: 40px; text-align: center;">
+                            <div style="font-size: 64px; margin-bottom: 20px;">🍇</div>
+                            <p style="color: var(--color-text-muted); font-style: italic;">From vineyard to your table</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="values-grid" style="margin-top: 80px;">
+                    <h2 style="text-align: center; margin-bottom: 40px;">Our Values</h2>
+                    <div class="value-card">
+                        <h3>🍷 Curated Excellence</h3>
+                        <p>Every product in our collection is personally selected and tasted. We work directly with vineyards and brands to bring you the best at fair prices.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>🌿 Authentic Heritage</h3>
+                        <p>We celebrate the centuries of tradition behind European winemaking and French beauty craftsmanship. Each product tells a story of place and heritage.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>🤝 Personal Service</h3>
+                        <p>Whether you need wine pairing advice, a birthday gift recommendation, or help choosing a skincare routine — our team is here for you.</p>
+                    </div>
+                </div>
+
+                <div class="stats-row" style="margin-top: 80px; text-align: center;">
+                    <div class="stat-item">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Premium Products</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">7</div>
+                        <div class="stat-label">Luxury Brands</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Years of Expertise</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">HK$</div>
+                        <div class="stat-label">Local Pricing</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer__cols">
+                <div class="footer__col">
+                    <h4 class="footer__heading">Vino &amp; Beauté</h4>
+                    <p class="footer__text">Premium wines, spirits, and beauty products curated for discerning tastes. Serving Hong Kong with the finest European selections since 2024.</p>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__heading">Shop</h4>
+                    <nav aria-label="Shop links">
+                        <ul class="footer__links">
+                            <li><a href="category.html?cId=7&amp;csubId=14">Red Wines</a></li>
+                            <li><a href="category.html?cId=7&amp;csubId=15">White Wines</a></li>
+                            <li><a href="category.html?cId=2">Beauty</a></li>
+                            <li><a href="category.html?cId=1">Wellness</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__heading">Customer Service</h4>
+                    <nav aria-label="Service links">
+                        <ul class="footer__links">
+                            <li><a href="delivery.html">Shipping Info</a></li>
+                            <li><a href="delivery.html#returns">Returns Policy</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__heading">Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" rel="noopener noreferrer" aria-label="Follow us on Instagram">Instagram</a>
+                        <a href="#" class="social-link" rel="noopener noreferrer" aria-label="Follow us on Facebook">Facebook</a>
+                        <a href="#" class="social-link" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">X (Twitter)</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Vino &amp; Beauté — ellis-trading.shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <aside class="cart-sidebar" id="cartSidebar" role="dialog" aria-label="Shopping cart">
+        <div class="cart-sidebar__header">
+            <h3>Shopping Cart</h3>
+            <button onclick="toggleCart()" aria-label="Close cart">✕</button>
+        </div>
+        <div class="cart-sidebar__items" id="cartItems" aria-live="polite">
+            <p class="cart-empty">Your cart is empty</p>
+        </div>
+        <div class="cart-sidebar__footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">HK$0</span>
+            </div>
+            <button class="btn btn--primary btn--full" onclick="handleCheckout()">Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <div class="overlay" id="overlay" onclick="toggleCart()" role="presentation"></div>
+
+    <script src="js/products.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        function handleCheckout() {
+            alert('Checkout coming soon! Email hello@ellis-trading.shop or call +852 2123 4567.');
+            toggleCart();
+        }
+
+        (function() {
+            const saved = localStorage.getItem('eb_cart');
+            if (saved) { try { Store.cart = JSON.parse(saved); } catch(e) { Store.cart = []; } }
+            Store.updateCartUI();
+        })();
+    </script>
+</body>
+</html>

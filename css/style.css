@@ -8,6 +8,7 @@
     --color-bg-card: #1e1830;
     --color-primary: #c9a84c;
     --color-primary-hover: #dbb85d;
+    --color-primary-dark: #b8943e;
     --color-text: #e8e4ef;
     --color-text-muted: #9a93b0;
     --color-text-dark: #4a4560;
@@ -26,6 +27,17 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
+
+/* Focus styles for accessibility */
+*:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+a:focus, button:focus {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
 
 body {
     font-family: var(--font-body);

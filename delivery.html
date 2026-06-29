@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping & Delivery — Vino & Beauté | ellis-trading.shop</title>
+    <meta name="description" content="Learn about shipping and delivery options for Vino & Beauté. Free delivery on orders over HK$1,000. Fast, secure delivery across Hong Kong.">
+    <link rel="canonical" href="https://ellis-trading.shop/delivery.html">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/seo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What are the shipping costs?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Standard shipping is HK$50. Free delivery on all orders over HK$1,000. Express delivery is HK$120."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long does delivery take?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Standard delivery takes 2-3 business days. Express delivery arrives the next business day if ordered before 2pm HKT."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you deliver outside Hong Kong?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Currently we deliver within Hong Kong only. International shipping is coming soon."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="Vino & Beauté home">
+                <span class="logo__icon">🍷</span>
+                <span class="logo__text">Vino &amp; Beauté</span>
+            </a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="category.html?cId=7&amp;csubId=14">Red Wines</a>
+                <a href="category.html?cId=7&amp;csubId=15">White Wines</a>
+                <a href="category.html?cId=2">Beauty</a>
+                <a href="category.html?cId=1">Wellness</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <button class="cart-btn" onclick="toggleCart()" aria-label="Open cart">
+                🛒 <span id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Shipping &amp; Delivery</h1>
+                <p>We deliver premium wines and beauty products across Hong Kong with care and speed.</p>
+            </div>
+        </section>
+
+        <section class="delivery-section">
+            <div class="container">
+                <div class="delivery-grid">
+                    <div class="delivery-card">
+                        <h3>🚚 Standard Delivery</h3>
+                        <p class="delivery-price"><strong>HK$50</strong> — <strong>FREE</strong> on orders over HK$1,000</p>
+                        <p>2–3 business days</p>
+                        <p>Tracked delivery with signature required for wine orders.</p>
+                    </div>
+                    <div class="delivery-card">
+                        <h3>⚡ Express Delivery</h3>
+                        <p class="delivery-price"><strong>HK$120</strong></p>
+                        <p>Next business day (order before 2pm HKT)</p>
+                        <p>Priority handling with real-time tracking.</p>
+                    </div>
+                    <div class="delivery-card">
+                        <h3>🎁 Gift Wrapping</h3>
+                        <p class="delivery-price"><strong>HK$30</strong> per item</p>
+                        <p>Luxury gift boxes with personalized message card.</p>
+                        <p>Perfect for wine and beauty gifts.</p>
+                    </div>
+                </div>
+
+                <h2 style="margin-top: 60px; text-align: center;">Delivery Areas</h2>
+                <p style="text-align: center; color: var(--color-text-muted); max-width: 600px; margin: 10px auto 40px;">
+                    We deliver to all areas of Hong Kong Island, Kowloon, and the New Territories.
+                </p>
+
+                <div class="delivery-areas">
+                    <div class="area-col">
+                        <h4>Hong Kong Island</h4>
+                        <ul>
+                            <li>Central &amp; Sheung Wan</li>
+                            <li>Wan Chai &amp; Causeway Bay</li>
+                            <li>Happy Valley &amp; Fo Tan</li>
+                            <li>South Horizons &amp; Aberdeen</li>
+                            <li>Lantau Island</li>
+                        </ul>
+                    </div>
+                    <div class="area-col">
+                        <h4>Kowloon</h4>
+                        <ul>
+                            <li>Tsim Sha Tsui &amp> Jordan</li>
+                            <li>Mong Kok &amp> Prince Edward</li>
+                            <li>Sha Tin &amp> Fan Ling</li>
+                            <li>Tsz Wan Shan &amp> Lai Chi Kok</li>
+                            <li>Clear Water Bay</li>
+                        </ul>
+                    </div>
+                    <div class="area-col">
+                        <h4>New Territories</h4>
+                        <ul>
+                            <li>Tsuen Wan &amp> Kwun Tong</li>
+                            <li>Sai Kung &amp> Tseung Kwan O</li>
+                            <li>Tai Po &amp> Shatin</li>
+                            <li>Yuen Long &amp> Fanling</li>
+                            <li>Tung Chung</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2 style="margin-top: 60px; text-align: center;" id="returns">Returns &amp; Exchanges</h2>
+                <div class="returns-policy">
+                    <div class="return-rule">
+                        <h4>Wine Returns</h4>
+                        <p>If any bottle arrives damaged, please contact us within 48 hours with photos. We'll arrange a replacement or refund.</p>
+                        <p>Unopened bottles may be returned within 14 days for a full refund (minus shipping).</p>
+                    </div>
+                    <div class="return-rule">
+                        <h4>Beauty Product Returns</h4>
+                        <p>Sealed, unopened products can be returned within 14 days. For hygiene reasons, opened beauty products cannot be returned unless defective.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer__cols">
+                <div class="footer__col">
+                    <h4 class="footer__heading">Vino &amp; Beauté</h4>
+                    <p class="footer__text">Premium wines, spirits, and beauty products curated for discerning tastes. Serving Hong Kong with the finest European selections since 2024.</p>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__heading">Shop</h4>
+                    <nav aria-label="Shop links">
+                        <ul class="footer__links">
+                            <li><a href="category.html?cId=7&amp;csubId=14">Red Wines</a></li>
+                            <li><a href="category.html?cId=7&amp;csubId=15">White Wines</a></li>
+                            <li><a href="category.html?cId=2">Beauty</a></li>
+                            <li><a href="category.html?cId=1">Wellness</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__heading">Customer Service</h4>
+                    <nav aria-label="Service links">
+                        <ul class="footer__links">
+                            <li><a href="delivery.html">Shipping Info</a></li>
+                            <li><a href="delivery.html#returns">Returns Policy</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__heading">Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" rel="noopener noreferrer" aria-label="Follow us on Instagram">Instagram</a>
+                        <a href="#" class="social-link" rel="noopener noreferrer" aria-label="Follow us on Facebook">Facebook</a>
+                        <a href="#" class="social-link" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">X (Twitter)</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Vino &amp; Beauté — ellis-trading.shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <aside class="cart-sidebar" id="cartSidebar" role="dialog" aria-label="Shopping cart">
+        <div class="cart-sidebar__header">
+            <h3>Shopping Cart</h3>
+            <button onclick="toggleCart()" aria-label="Close cart">✕</button>
+        </div>
+        <div class="cart-sidebar__items" id="cartItems" aria-live="polite">
+            <p class="cart-empty">Your cart is empty</p>
+        </div>
+        <div class="cart-sidebar__footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">HK$0</span>
+            </div>
+            <button class="btn btn--primary btn--full" onclick="handleCheckout()">Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <div class="overlay" id="overlay" onclick="toggleCart()" role="presentation"></div>
+
+    <script src="js/products.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        function handleCheckout() {
+            alert('Checkout coming soon! Email hello@ellis-trading.shop or call +852 2123 4567.');
+            toggleCart();
+        }
+
+        (function() {
+            const saved = localStorage.getItem('eb_cart');
+            if (saved) { try { Store.cart = JSON.parse(saved); } catch(e) { Store.cart = []; } }
+            Store.updateCartUI();
+        })();
+    </script>
+</body>
+</html>
