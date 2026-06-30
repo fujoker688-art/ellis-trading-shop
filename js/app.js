@@ -483,13 +483,13 @@ function submitOrder(e) {
         'Email: ' + email + '\n' +
         'Delivery Address: ' + address;
     var message = encodeURIComponent(body);
-    // Send via mailto
-    window.location.href = 'mailto:hello@ellis-trading.shop?subject=Order%20from%20' + encodeURIComponent(name) + '&body=' + message;
-    // Clear cart after order
+    // Clear cart before mailto (mailto may block further JS)
     Store.cart = [];
+    localStorage.removeItem('vb_cart');
     Store.updateCartUI();
     closeCheckout();
-    alert('Thank you, ' + name + '! Your order email has been opened. Please send it to complete your order.');
+    // Send via mailto
+    window.location.href = 'mailto:hello@ellis-trading.shop?subject=Order%20from%20' + encodeURIComponent(name) + '&body=' + message;
 }
 
 function toggleCart() {
