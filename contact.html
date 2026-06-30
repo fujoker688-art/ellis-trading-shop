@@ -35,7 +35,6 @@
         <div class="container">
             <div class="header__inner">
                 <a href="/" class="logo" aria-label="Ellis Trading Home">
-                    <span class="logo__mark">V</span>
                     <span class="logo__text">Ellis Trading</span>
                 </a>
                 <nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
@@ -204,12 +203,33 @@
     <script src="js/products.js"></script>
     <script src="js/app.js"></script>
     <script>
-        // Simple contact form handler
+        // Contact form — sends email via mailto
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            alert(`Thank you, ${name}! Your message has been received. We'll respond within 24 hours.`);
+            var fd = new FormData(this);
+            var name = fd.get('name');
+            var email = fd.get('email');
+            var phone = fd.get('phone') || 'Not provided';
+            var subject = fd.get('subject');
+            var message = fd.get('message');
+            var body = 'New Contact Form Submission from ellis-trading.shop\n\n' +
+                'Name: ' + name + '\n' +
+                'Email: ' + email + '\n' +
+                'Phone: ' + phone + '\n' +
+                'Subject: ' + subject + '\n\n' +
+                'Message:\n' + message;
+            var encodedBody = encodeURIComponent(body);
+            var subjectMap = {
+                'order': 'Order Inquiry',
+                'wine': 'Wine Advice',
+                'beauty': 'Beauty Products',
+                'shipping': 'Shipping & Delivery',
+                'returns': 'Returns & Exchanges',
+                'other': 'General Inquiry'
+            };
+            var emailSubject = subjectMap[subject] || 'General Inquiry';
+            window.location.href = 'mailto:hello@ellis-trading.shop?subject=' + encodeURIComponent(emailSubject + ' - ' + name) + '&body=' + encodedBody;
+            alert('Thank you, ' + name + '! Your email client has been opened. Please send the email to complete your message.');
             this.reset();
         });
     </script>

@@ -63,12 +63,17 @@ const Store = {
         );
     },
 
-    addToCart(product) {
-        const existing = this.cart.find(c => c.dpId === product.dpId);
+    addToCart(dpIdOrProduct) {
+        var product = dpIdOrProduct;
+        if (typeof dpIdOrProduct === 'number' || typeof dpIdOrProduct === 'string') {
+            product = this.products.find(function(p) { return p.dpId == dpIdOrProduct; });
+        }
+        if (!product) return;
+        var existing = this.cart.find(function(c) { return c.dpId === product.dpId; });
         if (existing) {
             existing.qty += 1;
         } else {
-            this.cart.push({ ...product, qty: 1 });
+            this.cart.push(Object.assign({}, product, { qty: 1 }));
         }
         this.updateCartUI();
     },
@@ -405,22 +410,86 @@ function handleCheckout() {
         alert('Your cart is empty. Add some products first!');
         return;
     }
-    const total = Store.getCartTotal();
-    // Build order summary text
-    const items = Store.cart.map(c => `${c.name} x${c.qty} = HK$${(c.price * c.qty).toLocaleString()}`).join('\n');
-    const message = encodeURIComponent(
-        `New Order from ellis-trading.shop\n\n` +
-        `Items:\n${items}\n\n` +
-        `Total: HK$${total.toLocaleString()}\n\n` +
-        `--- Please fill in your details below ---\n` +
-        `Name: [your name]\n` +
-        `Phone: [your phone]\n` +
-        `Email: [your email]\n` +
-        `Delivery Address: [your address]`
-    );
-    // Open in default email client
-    window.location.href = `mailto:hello@ellis-trading.shop?subject=Order Inquiry - ellis-trading.shop&body=${message}`;
-    toggleCart();
+    // Build order summary
+    var total = Store.getCartTotal();
+    var items = Store.cart.map(function(c) {
+        return c.name + ' x' + c.qty + ' = HK$' + (c.price * c.qty).toLocaleString();
+    }).join('\n');
+    // Show checkout form overlay
+    var overlay = document.getElementById('overlay');
+    overlay.classList.add('active');
+    var sidebar = document.getElementById('cartSidebar');
+    // Build checkout form HTML
+    var formHtml = '<div class="checkout-form-wrapper">';
+    formHtml += '<h3>Checkout</h3>';
+    formHtml += '<div class="checkout-summary" style="background:var(--color-bg-secondary,#1a1423);border-radius:8px;padding:16px;margin-bottom:20px;">';
+    formHtml += '<p style="margin:0 0 8px;font-size:0.9rem;color:var(--color-text-muted);">Order Summary</p>';
+    formHtml += '<pre style="margin:0;font-size:0.85rem;white-space:pre-wrap;">' + items + '</pre>';
+    formHtml += '<p style="margin:8px 0 0;font-weight:600;font-size:1.1rem;">Total: HK$' + total.toLocaleString() + '</p>';
+    formHtml += '</div>';
+    formHtml += '<form id="checkoutForm" onsubmit="submitOrder(event)">';
+    formHtml += '<div class="form-group" style="margin-bottom:12px;">';
+    formHtml += '<label style="display:block;margin-bottom:4px;font-size:0.9rem;">Name *</label>';
+    formHtml += '<input type="text" name="name" required placeholder="Your name" style="width:100%;padding:10px;border-radius:6px;border:1px solid var(--color-border,#333);background:var(--color-bg,#0f0b14);color:var(--color-text,#fff);font-size:0.95rem;">';
+    formHtml += '</div>';
+    formHtml += '<div class="form-group" style="margin-bottom:12px;">';
+    formHtml += '<label style="display:block;margin-bottom:4px;font-size:0.9rem;">Phone *</label>';
+    formHtml += '<input type="tel" name="phone" required placeholder="+852 XXXX XXXX" style="width:100%;padding:10px;border-radius:6px;border:1px solid var(--color-border,#333);background:var(--color-bg,#0f0b14);color:var(--color-text,#fff);font-size:0.95rem;">';
+    formHtml += '</div>';
+    formHtml += '<div class="form-group" style="margin-bottom:12px;">';
+    formHtml += '<label style="display:block;margin-bottom:4px;font-size:0.9rem;">Email *</label>';
+    formHtml += '<input type="email" name="email" required placeholder="you@example.com" style="width:100%;padding:10px;border-radius:6px;border:1px solid var(--color-border,#333);background:var(--color-bg,#0f0b14);color:var(--color-text,#fff);font-size:0.95rem;">';
+    formHtml += '</div>';
+    formHtml += '<div class="form-group" style="margin-bottom:16px;">';
+    formHtml += '<label style="display:block;margin-bottom:4px;font-size:0.9rem;">Delivery Address *</label>';
+    formHtml += '<textarea name="address" required rows="3" placeholder="Full delivery address" style="width:100%;padding:10px;border-radius:6px;border:1px solid var(--color-border,#333);background:var(--color-bg,#0f0b14);color:var(--color-text,#fff);font-size:0.95rem;resize:vertical;"></textarea>';
+    formHtml += '</div>';
+    formHtml += '<button type="submit" class="btn btn--primary" style="width:100%;">Place Order</button>';
+    formHtml += '<button type="button" class="btn btn--outline" style="width:100%;margin-top:8px;" onclick="closeCheckout()">Cancel</button>';
+    formHtml += '</form>';
+    formHtml += '</div>';
+    sidebar.querySelector('.cart-sidebar__items').innerHTML = formHtml;
+    sidebar.querySelector('.cart-sidebar__footer').style.display = 'none';
+}
+
+function closeCheckout() {
+    Store.updateCartUI();
+    var sidebar = document.getElementById('cartSidebar');
+    sidebar.querySelector('.cart-sidebar__footer').style.display = '';
+    var wrapper = sidebar.querySelector('.checkout-form-wrapper');
+    if (wrapper) wrapper.remove();
+    document.getElementById('overlay').classList.remove('active');
+    sidebar.classList.remove('open');
+}
+
+function submitOrder(e) {
+    e.preventDefault();
+    var form = e.target;
+    var fd = new FormData(form);
+    var name = fd.get('name');
+    var phone = fd.get('phone');
+    var email = fd.get('email');
+    var address = fd.get('address');
+    var total = Store.getCartTotal();
+    var items = Store.cart.map(function(c) {
+        return c.name + ' x' + c.qty + ' = HK$' + (c.price * c.qty).toLocaleString();
+    }).join('\n');
+    var body = 'New Order from ellis-trading.shop\n\n' +
+        'Items:\n' + items + '\n\n' +
+        'Total: HK$' + total.toLocaleString() + '\n\n' +
+        '--- Customer Details ---\n' +
+        'Name: ' + name + '\n' +
+        'Phone: ' + phone + '\n' +
+        'Email: ' + email + '\n' +
+        'Delivery Address: ' + address;
+    var message = encodeURIComponent(body);
+    // Send via mailto
+    window.location.href = 'mailto:hello@ellis-trading.shop?subject=Order%20from%20' + encodeURIComponent(name) + '&body=' + message;
+    // Clear cart after order
+    Store.cart = [];
+    Store.updateCartUI();
+    closeCheckout();
+    alert('Thank you, ' + name + '! Your order email has been opened. Please send it to complete your order.');
 }
 
 function toggleCart() {
