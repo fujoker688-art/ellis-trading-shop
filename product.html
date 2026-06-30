@@ -10,14 +10,14 @@
     <meta name="description" id="seo-description" content="Shop premium products at Vino & Beauté.">
     <meta name="keywords" id="seo-keywords" content="wine, beauty, skincare, fragrance, luxury">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-    <link rel="canonical" id="seo-canonical" href="https://ellis-trading.shop/category.html">
+    <link rel="canonical" id="seo-canonical" href="https://ellis-trading.shop/product.html">
 
     <!-- Open Graph -->
     <meta property="og:type" content="product">
     <meta property="og:url" id="seo-og-url" content="https://ellis-trading.shop/">
     <meta property="og:title" id="seo-og-title" content="Product — Vino & Beauté">
     <meta property="og:description" id="seo-og-desc" content="Shop premium products at Vino & Beauté.">
-    <meta property="og:image" id="seo-og-image" content="https://ellis-trading.shop/images/og-home.jpg">
+    <meta property="og:image" id="seo-og-image" content="https://ellis-trading.shop/images/og-home.svg">
     <meta property="og:site_name" content="Vino & Beauté">
     <meta property="og:locale" content="en_HK">
 
@@ -29,7 +29,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" id="seo-tw-title" content="Product — Vino & Beauté">
     <meta name="twitter:description" id="seo-tw-desc" content="Shop premium products at Vino & Beauté.">
-    <meta name="twitter:image" id="seo-tw-image" content="https://ellis-trading.shop/images/og-home.jpg">
+    <meta name="twitter:image" id="seo-tw-image" content="https://ellis-trading.shop/images/og-home.svg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -141,8 +141,8 @@
                 <div class="footer__col">
                     <h4 class="footer__heading">Follow Us</h4>
                     <div class="social-links">
-                        <a href="#" class="social-link" rel="noopener noreferrer">Instagram</a>
-                        <a href="#" class="social-link" rel="noopener noreferrer">Facebook</a>
+                        <a href="https://www.instagram.com/" class="social-link" rel="noopener noreferrer">Instagram</a>
+                        <a href="https://www.facebook.com/" class="social-link" rel="noopener noreferrer">Facebook</a>
                     </div>
                 </div>
             </div>
@@ -197,10 +197,10 @@
                         document.getElementById('seo-og-url').setAttribute('content', `https://ellis-trading.shop/product.html?dpId=${product.dpId}`);
                         document.getElementById('seo-og-title').setAttribute('content', `${productName} — Vino & Beauté`);
                         document.getElementById('seo-og-desc').setAttribute('content', desc.substring(0, 160));
-                        document.getElementById('seo-og-image').setAttribute('content', product.image || 'https://ellis-trading.shop/images/og-home.jpg');
+                        document.getElementById('seo-og-image').setAttribute('content', product.image || 'https://ellis-trading.shop/images/og-home.svg');
                         document.getElementById('seo-tw-title').setAttribute('content', `${productName} — Vino & Beauté`);
                         document.getElementById('seo-tw-desc').setAttribute('content', desc.substring(0, 160));
-                        document.getElementById('seo-tw-image').setAttribute('content', product.image || 'https://ellis-trading.shop/images/og-home.jpg');
+                        document.getElementById('seo-tw-image').setAttribute('content', product.image || 'https://ellis-trading.shop/images/og-home.svg');
                         document.getElementById('seo-og-url').setAttribute('content', `https://ellis-trading.shop/product.html?dpId=${product.dpId}`);
 
                         // Set OG price
