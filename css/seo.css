@@ -190,3 +190,188 @@ img[loading="lazy"] {
     }
     html { scroll-behavior: auto; }
 }
+
+/* --- Cart item styles --- */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-border, #2a2440);
+    gap: 12px;
+}
+.cart-item__info { flex: 1; min-width: 0; }
+.cart-item__name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+.cart-item__price {
+    font-size: 0.85rem;
+    color: var(--color-primary, #c9a84c);
+    font-weight: 600;
+}
+.cart-item__qty {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+.cart-item__qty button {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--color-border, #2a2440);
+    background: var(--color-bg-card, #1e1830);
+    color: var(--color-text, #e8e4ef);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cart-item__qty button:hover {
+    background: var(--color-primary, #c9a84c);
+    color: #000;
+}
+.cart-item__qty span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* --- Mobile nav overlay --- */
+@media (max-width: 768px) {
+    .nav {
+        display: none !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(15, 11, 20, 0.98);
+        z-index: 9999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+    }
+    .nav.open {
+        display: flex !important;
+    }
+    .nav__list {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+    .nav__item {
+        margin: 0;
+    }
+    .nav__link {
+        font-size: 1.4rem;
+        padding: 16px 24px;
+        display: block;
+    }
+    .dropdown {
+        position: static;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        margin-top: 0;
+    }
+    .dropdown__link {
+        font-size: 1rem;
+        padding: 10px 40px;
+        color: var(--color-text-muted, #9a93b0);
+    }
+}
+
+/* --- Search results dropdown --- */
+.search-results {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-bg-card, #1e1830);
+    border: 1px solid var(--color-border, #2a2440);
+    border-top: none;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    border-radius: 0 0 8px 8px;
+}
+.search-overlay.active .search-results {
+    display: block;
+}
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: var(--color-text, #e8e4ef);
+    border-bottom: 1px solid var(--color-border, #2a2440);
+    transition: background 0.2s;
+}
+.search-result-item:hover {
+    background: rgba(201, 168, 76, 0.08);
+}
+.search-result-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+.search-result-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+.search-result-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.search-result-price {
+    font-size: 0.8rem;
+    color: var(--color-primary, #c9a84c);
+    font-weight: 600;
+}
+.search-no-results {
+    padding: 20px 16px;
+    text-align: center;
+    color: var(--color-text-muted, #9a93b0);
+    font-size: 0.9rem;
+}
+
+/* --- Mobile menu button visible on small screens --- */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 10000;
+}
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .mobile-menu-btn span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--color-text, #e8e4ef);
+        border-radius: 2px;
+        transition: transform 0.3s;
+    }
+}

@@ -12,7 +12,8 @@ const Store = {
     searchResults: [],
 
     init(products) {
-        this.products = products;
+        // Flatten: products is {wines: [...], beauty: [...], wellness: [...], all: [...]}
+        this.products = Array.isArray(products) ? products : Object.values(products).flat();
         this.renderAll();
     },
 
@@ -66,6 +67,8 @@ const Store = {
     updateCartUI() {
         const count = this.cart.reduce((s, c) => s + c.qty, 0);
         document.getElementById('cartCount').textContent = count;
+        // Persist to localStorage
+        try { localStorage.setItem('vb_cart', JSON.stringify(this.cart)); } catch(e) {}
 
         const container = document.getElementById('cartItems');
         if (this.cart.length === 0) {
@@ -186,8 +189,10 @@ function toggleSearch() {
 }
 
 function toggleCart() {
-    document.getElementById('cartSidebar').classList.toggle('open');
-    document.getElementById('overlay').classList.toggle('active');
+    const sidebar = document.getElementById('cartSidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
 }
 
 function toggleMobileMenu() {
@@ -201,10 +206,34 @@ function openProductDetail(dpId) {
     window.location.href = `/product.html?dpId=${dpId}`;
 }
 
+// Search results dropdown
+let searchTimeout;
 function filterProducts(query) {
-    if (!query || query.length < 2) return;
-    const results = Store.search(query);
-    // Could show results dropdown here
+    const container = document.getElementById('searchResults');
+    if (!container) return;
+    if (!query || query.length < 2) {
+        container.innerHTML = '';
+        container.style.display = 'none';
+        return;
+    }
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+        const results = Store.search(query);
+        if (results.length === 0) {
+            container.innerHTML = '<p class="search-no-results">No products found</p>';
+        } else {
+            container.innerHTML = results.slice(0, 8).map(p =>
+                `<a href="${p.url}" class="search-result-item" onclick="toggleSearch()">
+                    <img src="${p.image || ''}" alt="" width="40" height="40" onerror="this.style.display='none'">
+                    <span class="search-result-info">
+                        <span class="search-result-name">${p.name}</span>
+                        <span class="search-result-price">HK$${(p.price || 0).toLocaleString()}</span>
+                    </span>
+                </a>`
+            ).join('');
+        }
+        container.style.display = 'block';
+    }, 300);
 }
 
 // =============================================
@@ -260,7 +289,7 @@ function handleCheckout() {
         return;
     }
     const total = Store.getCartTotal();
-    alert(`Thank you for your order totaling HK$${total.toLocaleString()}!\n\nFor now, please email us at hello@ellis-trading.shop or call +852 2123 4567 to complete your purchase.\n\nWe'll confirm availability and arrange delivery.`);
+    alert(`Thank you for your order totaling HK$${total.toLocaleString()}!\n\nFor now, please email us at hello@ellis-trading.shop or call +852 6493 9319 to complete your purchase.\n\nWe'll confirm availability and arrange delivery.`);
     toggleCart();
 }
 
@@ -268,11 +297,32 @@ function toggleCart() {
     const sidebar = document.getElementById('cartSidebar');
     const overlay = document.getElementById('overlay');
     sidebar.classList.toggle('open');
-    overlay.classList.toggle('open');
+    overlay.classList.toggle('active');
 }
+
+// Lazy image handler — add .loaded class when image loads
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', () => img.classList.add('loaded'));
+            img.addEventListener('error', () => img.classList.add('loaded'));
+        }
+    });
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     initSlider();
+
+    // Load cart from localStorage
+    try {
+        const saved = localStorage.getItem('vb_cart');
+        if (saved) {
+            Store.cart = JSON.parse(saved);
+            Store.updateCartUI();
+        }
+    } catch(e) {}
 
     // Load products from global data
     if (typeof PRODUCTS !== 'undefined') {

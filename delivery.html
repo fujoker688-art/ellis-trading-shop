@@ -47,25 +47,36 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header class="site-header">
+    <header class="header" role="banner">
         <div class="container">
-            <a href="index.html" class="logo" aria-label="Vino & Beauté home">
-                <span class="logo__icon">🍷</span>
-                <span class="logo__text">Vino &amp; Beauté</span>
-            </a>
-            <nav class="main-nav" aria-label="Main navigation">
-                <a href="index.html">Home</a>
-                <a href="category.html?cId=7&amp;csubId=14">Red Wines</a>
-                <a href="category.html?cId=7&amp;csubId=15">White Wines</a>
-                <a href="category.html?cId=2">Beauty</a>
-                <a href="category.html?cId=1">Wellness</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-            <button class="cart-btn" onclick="toggleCart()" aria-label="Open cart">
-                🛒 <span id="cartCount">0</span>
-            </button>
+            <div class="header__inner">
+                <a href="/" class="logo" aria-label="Vino & Beauté Home">
+                    <span class="logo__mark">V</span>
+                    <span class="logo__text">Vino &amp; Beauté</span>
+                </a>
+                <nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                        <li class="nav__item nav__item--dropdown">
+                            <a href="/category.html?cId=7" class="nav__link" aria-haspopup="true">Wines</a>
+                            <div class="dropdown" role="menu">
+                                <a href="/category.html?cId=7&amp;csubId=14" class="dropdown__link" role="menuitem">Red Wines</a>
+                                <a href="/category.html?cId=7&amp;csubId=15" class="dropdown__link" role="menuitem">White Wines</a>
+                            </div>
+                        </li>
+                        <li class="nav__item"><a href="/category.html?cId=2" class="nav__link">Beauty</a></li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+                    <button class="cart-btn" aria-label="Shopping cart" onclick="toggleCart()" aria-haspopup="dialog">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 1h2l1 4m0 0h10l-1.5 7H5.5L3 5z" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="17" r="1" stroke="currentColor" stroke-width="1.5"/><circle cx="14" cy="17" r="1" stroke="currentColor" stroke-width="1.5"/></svg>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Toggle mobile menu" onclick="toggleMobileMenu()">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -119,20 +130,20 @@
                     <div class="area-col">
                         <h4>Kowloon</h4>
                         <ul>
-                            <li>Tsim Sha Tsui &amp> Jordan</li>
-                            <li>Mong Kok &amp> Prince Edward</li>
-                            <li>Sha Tin &amp> Fan Ling</li>
-                            <li>Tsz Wan Shan &amp> Lai Chi Kok</li>
+                            <li>Tsim Sha Tsui &amp; Jordan</li>
+                            <li>Mong Kok &amp; Prince Edward</li>
+                            <li>Sha Tin &amp; Fan Ling</li>
+                            <li>Tsz Wan Shan &amp; Lai Chi Kok</li>
                             <li>Clear Water Bay</li>
                         </ul>
                     </div>
                     <div class="area-col">
                         <h4>New Territories</h4>
                         <ul>
-                            <li>Tsuen Wan &amp> Kwun Tong</li>
-                            <li>Sai Kung &amp> Tseung Kwan O</li>
-                            <li>Tai Po &amp> Shatin</li>
-                            <li>Yuen Long &amp> Fanling</li>
+                            <li>Tsuen Wan &amp; Kwun Tong</li>
+                            <li>Sai Kung &amp; Tseung Kwan O</li>
+                            <li>Tai Po &amp; Shatin</li>
+                            <li>Yuen Long &amp; Fanling</li>
                             <li>Tung Chung</li>
                         </ul>
                     </div>
@@ -154,9 +165,9 @@
         </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
-            <div class="footer__cols">
+            <div class="footer__grid">
                 <div class="footer__col">
                     <h4 class="footer__heading">Vino &amp; Beauté</h4>
                     <p class="footer__text">Premium wines, spirits, and beauty products curated for discerning tastes. Serving Hong Kong with the finest European selections since 2024.</p>
@@ -185,9 +196,9 @@
                 <div class="footer__col">
                     <h4 class="footer__heading">Follow Us</h4>
                     <div class="social-links">
-                        <a href="#" class="social-link" rel="noopener noreferrer" aria-label="Follow us on Instagram">Instagram</a>
-                        <a href="#" class="social-link" rel="noopener noreferrer" aria-label="Follow us on Facebook">Facebook</a>
-                        <a href="#" class="social-link" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">X (Twitter)</a>
+                        <a href="https://www.instagram.com/" class="social-link" rel="noopener noreferrer" aria-label="Follow us on Instagram">Instagram</a>
+                        <a href="https://www.facebook.com/" class="social-link" rel="noopener noreferrer" aria-label="Follow us on Facebook">Facebook</a>
+                        <a href="https://x.com/" class="social-link" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">X (Twitter)</a>
                     </div>
                 </div>
             </div>
