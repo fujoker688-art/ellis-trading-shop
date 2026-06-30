@@ -185,7 +185,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
-            const dpId = params.get('dpId');
+            const dpId = Number(params.get('dpId'));
             const container = document.getElementById('productDetail');
 
             // Fallback timeout: show a message if products fail to load

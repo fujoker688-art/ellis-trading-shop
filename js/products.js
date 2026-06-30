@@ -1,4 +1,4 @@
-const PRODUCTS = {
+var PRODUCTS = {
     wines: [
     {    dpId: 1157, pId: '1108', name: 'LA CUVEE HENRI 2018', nameCn: '亨利特釀 2018', price: 650, image: 'https://www.speedmalls.com/back/images/product/1664420990000/1108_0.jpeg', brand: '', description: '', categoryId: 7, subCategoryId: 14, stock: 0, pv: 0, url: '/product.html?dpId=1157&pId=1108', categoryLabel: 'WINES', subCategoryLabel: 'Red Wines'},
     {    dpId: 242, pId: '242', name: 'LA RÉSERVE DE ROSTÉGUY 2008', nameCn: '羅斯特傑紅葡萄酒 2008', price: 960, image: 'https://www.speedmalls.com/back/images/product/1643076129000/242_0.jpeg', brand: '', description: '', categoryId: 7, subCategoryId: 14, stock: 0, pv: 0, url: '/product.html?dpId=242&pId=242', categoryLabel: 'WINES', subCategoryLabel: 'Red Wines'},
@@ -440,3 +440,5 @@ const PRODUCTS = {
     {    dpId: 1352, pId: '1286', name: 'Anti-Hair Loss Detox Shampoo', nameCn: '防脫髮排毒洗髮水', price: 330, image: 'https://www.speedmalls.com/back/images/product/1730949463000/1286_0.jpeg', brand: '', description: '', categoryId: 3, subCategoryId: 0, stock: 0, pv: 0, url: '/product.html?dpId=1352&pId=1286', categoryLabel: 'WELLNESS', subCategoryLabel: null},
     ]
 };
+// Ensure PRODUCTS is accessible globally
+window.PRODUCTS = PRODUCTS;

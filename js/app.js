@@ -16,8 +16,15 @@ const Store = {
         if (Array.isArray(products)) {
             this.products = products;
         } else {
-            const { all, ...categories } = products;
-            this.products = Object.values(categories).flat();
+            this.products = [];
+            // Manually flatten for maximum browser compatibility
+            for (var key in products) {
+                if (key !== 'all' && Array.isArray(products[key])) {
+                    for (var i = 0; i < products[key].length; i++) {
+                        this.products.push(products[key][i]);
+                    }
+                }
+            }
         }
         // Normalize stock and descriptions
         this.products.forEach(p => {
