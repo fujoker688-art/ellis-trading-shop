@@ -158,7 +158,7 @@ function createProductCard(p) {
     return `
         <article class="product-card" onclick="openProductDetail(${p.dpId})" role="listitem">
             <img class="product-card__image"
-                 src="${p.image || 'https://via.placeholder.com/300x400/1a1423/9a93b0?text=No+Image'}"
+                 src="${p.image || 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22400%22><rect fill=%22%231a1423%22 width=%22300%22 height=%22400%22/><text fill=%22%239a93b0%22 x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2214%22>No Image</text></svg>'}"
                  alt="${altText}"
                  width="300" height="400"
                  loading="lazy"

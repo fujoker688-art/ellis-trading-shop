@@ -229,24 +229,5 @@
 
     <script src="js/products.js"></script>
     <script src="js/app.js"></script>
-    <script>
-        function toggleCart() {
-            const sidebar = document.getElementById('cartSidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('open');
-        }
-
-        function handleCheckout() {
-            alert('Checkout coming soon! Email hello@ellis-trading.shop or call +852 2123 4567.');
-            toggleCart();
-        }
-
-        (function() {
-            const saved = localStorage.getItem('eb_cart');
-            if (saved) { try { Store.cart = JSON.parse(saved); } catch(e) { Store.cart = []; } }
-            Store.updateCartUI();
-        })();
-    </script>
 </body>
 </html>

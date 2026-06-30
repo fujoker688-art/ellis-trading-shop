@@ -212,28 +212,6 @@
             alert(`Thank you, ${name}! Your message has been received. We'll respond within 24 hours.`);
             this.reset();
         });
-
-        // Cart functionality (shared with index.html)
-        function toggleCart() {
-            const sidebar = document.getElementById('cartSidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('open');
-        }
-
-        function handleCheckout() {
-            alert('Checkout coming soon! For now, please email us at hello@ellis-trading.shop or call +852 2123 4567.');
-            toggleCart();
-        }
-
-        // Initialize cart from localStorage
-        (function() {
-            const saved = localStorage.getItem('eb_cart');
-            if (saved) {
-                try { Store.cart = JSON.parse(saved); } catch(e) { Store.cart = []; }
-            }
-            Store.updateCartUI();
-        })();
     </script>
 </body>
 </html>
