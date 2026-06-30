@@ -106,7 +106,7 @@ img { max-width: 100%; display: block; }
 .nav__list { display: flex; gap: 32px; }
 
 .nav__link {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     font-weight: 500;
     color: var(--color-text-muted);
     transition: color 0.2s;
@@ -189,6 +189,11 @@ img { max-width: 100%; display: block; }
     border-radius: 8px;
     transition: all 0.2s;
     position: relative;
+}
+
+.cart-btn svg {
+    width: 26px;
+    height: 26px;
 }
 
 .search-toggle:hover,
