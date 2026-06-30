@@ -186,10 +186,19 @@
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const dpId = params.get('dpId');
+            const container = document.getElementById('productDetail');
+
+            // Fallback timeout: show a message if products fail to load
+            const timeout = setTimeout(() => {
+                if (!Store.products || Store.products.length === 0) {
+                    container.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--color-text-muted)">Unable to load products. Please try refreshing the page.</p>';
+                }
+            }, 10000);
 
             const check = setInterval(() => {
-                if (Store.products.length > 0) {
+                if (Store.products && Store.products.length > 0) {
                     clearInterval(check);
+                    clearTimeout(timeout);
                     const product = Store.products.find(p => p.dpId == dpId);
                     const container = document.getElementById('productDetail');
                     const relatedContainer = document.getElementById('relatedProducts');
@@ -264,7 +273,8 @@
                                 <div class="product-cta" style="display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;">
                                     <button class="btn btn--primary" onclick='Store.addToCart(${JSON.stringify(product).replace(/"/g,'&quot;')}); toggleCart();'>Add to Cart</button>
                                     <a href="/category.html?cId=${product.categoryId || 2}" class="btn btn--outline">View Similar</a>
-                                </article>
+                                </div>
+                            </article>
                                 `;
 
                                 // Inject product schema via DOM (avoid </script> in template literal)

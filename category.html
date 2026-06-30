@@ -170,7 +170,7 @@
         </div>
         <div class="cart-sidebar__footer">
             <div class="cart-total"><span>Total:</span><span id="cartTotal">HK$0</span></div>
-            <button class="btn btn--primary btn--full">Checkout</button>
+            <button class="btn btn--primary btn--full" onclick="handleCheckout()">Checkout</button>
         </div>
     </div>
     <div class="overlay" id="overlay" onclick="toggleCart()" role="presentation"></div>
@@ -179,9 +179,17 @@
     <script src="js/app.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Fallback timeout
+            const timeout = setTimeout(() => {
+                if (!Store.products || Store.products.length === 0) {
+                    const el = document.getElementById('categoryProducts');
+                    if (el) el.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--color-text-muted)">Unable to load products. Please try refreshing.</p>';
+                }
+            }, 10000);
             const check = setInterval(() => {
-                if (Store.products.length > 0) {
+                if (Store.products && Store.products.length > 0) {
                     clearInterval(check);
+                    clearTimeout(timeout);
                     Store.renderCategoryPage();
 
                     const params = new URLSearchParams(window.location.search);
