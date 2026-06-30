@@ -310,9 +310,10 @@ document.querySelector('.hero')?.addEventListener('mouseleave', () => {
 // Product Detail Page Renderer
 // =============================================
 function renderProductDetail(dpId) {
+    console.log('renderProductDetail called with dpId:', dpId);
     var container = document.getElementById('productDetail');
     var relatedContainer = document.getElementById('relatedProducts');
-    if (!container) return;
+    if (!container) { console.log('productDetail element not found!'); return; }
 
     // Fallback timeout
     var fallbackTimer = setTimeout(function() {
