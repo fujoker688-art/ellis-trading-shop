@@ -99,6 +99,9 @@ const Store = {
     updateCartUI() {
         const count = this.cart.reduce((s, c) => s + c.qty, 0);
         document.getElementById('cartCount').textContent = count;
+        // Update item count in footer
+        var countEl = document.getElementById('cartItemCount');
+        if (countEl) countEl.textContent = count + ' item' + (count !== 1 ? 's' : '');
         // Persist to localStorage
         try { localStorage.setItem('vb_cart', JSON.stringify(this.cart)); } catch(e) {}
 
@@ -108,15 +111,17 @@ const Store = {
         } else {
             container.innerHTML = this.cart.map(c => `
                 <div class="cart-item">
+                    <img class="cart-item__img" src="${c.image || ''}" alt="${c.name || ''}" width="60" height="60" onerror="this.style.display='none'">
                     <div class="cart-item__info">
                         <p class="cart-item__name">${c.name}</p>
-                        <p class="cart-item__price">HK$${c.price}</p>
+                        <p class="cart-item__price">HK$${(c.price || 0).toLocaleString()} each</p>
+                        <div class="cart-item__qty">
+                            <button onclick="Store.updateQty(${c.dpId}, -1)" aria-label="Decrease quantity">−</button>
+                            <span>${c.qty}</span>
+                            <button onclick="Store.updateQty(${c.dpId}, 1)" aria-label="Increase quantity">+</button>
+                        </div>
                     </div>
-                    <div class="cart-item__qty">
-                        <button onclick="Store.updateQty(${c.dpId}, -1)">−</button>
-                        <span>${c.qty}</span>
-                        <button onclick="Store.updateQty(${c.dpId}, 1)">+</button>
-                    </div>
+                    <button class="cart-item__remove" onclick="Store.removeFromCart(${c.dpId})" aria-label="Remove ${c.name}">&times;</button>
                 </div>
             `).join('');
         }
