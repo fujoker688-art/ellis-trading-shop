@@ -21,7 +21,7 @@ const Store = {
         }
         // Normalize stock and descriptions
         this.products.forEach(p => {
-            if (!p.stock || p.stock <= 0) p.stock = 15;
+            if (!p.stock || p.stock <= 0) p.stock = 40;
             if (!p.description) {
                 const catDescs = {
                     'WINES': 'A premium selection from our curated wine collection.',
