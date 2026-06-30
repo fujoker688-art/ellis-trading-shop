@@ -12,8 +12,13 @@ const Store = {
     searchResults: [],
 
     init(products) {
-        // Flatten: products is {wines: [...], beauty: [...], wellness: [...], all: [...]}
-        this.products = Array.isArray(products) ? products : Object.values(products).flat();
+        // Flatten category arrays (skip 'all' which duplicates wines+beauty+wellness)
+        if (Array.isArray(products)) {
+            this.products = products;
+        } else {
+            const { all, ...categories } = products;
+            this.products = Object.values(categories).flat();
+        }
         // Normalize stock and descriptions
         this.products.forEach(p => {
             if (!p.stock || p.stock <= 0) p.stock = 15;
