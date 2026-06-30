@@ -130,6 +130,11 @@ const Store = {
         if (!container) return;
         const featured = this.products.slice(0, 8);
         container.innerHTML = featured.map(p => createProductCard(p)).join('');
+        // Mark lazy images as loaded (they're inserted after DOMContentLoaded)
+        container.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            if (img.complete) img.classList.add('loaded');
+            else { img.addEventListener('load', () => img.classList.add('loaded')); img.addEventListener('error', () => img.classList.add('loaded')); }
+        });
     },
 
     renderBrands() {
@@ -160,7 +165,12 @@ const Store = {
 
         container.innerHTML = products.length
             ? products.map(p => createProductCard(p)).join('')
-            : '<p style="grid-column:1/-1;text-align:center;color:var(--color-text-muted);padding:60px 0;">No products found</p>';
+            : '<p style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--color-text-muted);">No products found</p>';
+        // Mark lazy images as loaded
+        container.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            if (img.complete) img.classList.add('loaded');
+            else { img.addEventListener('load', () => img.classList.add('loaded')); img.addEventListener('error', () => img.classList.add('loaded')); }
+        });
     }
 };
 
@@ -366,10 +376,18 @@ function renderProductDetail(dpId) {
                 html += '</article>';
                 container.innerHTML = html;
 
+                // Show the main product image
+                var mainImg = document.getElementById('mainProductImage');
+                if (mainImg) { if (mainImg.complete) mainImg.classList.add('loaded'); else { mainImg.addEventListener('load', function() { this.classList.add('loaded'); }); mainImg.addEventListener('error', function() { this.classList.add('loaded'); }); } }
+
                 // Related products
                 if (relatedContainer) {
                     var related = Store.products.filter(function(p) { return p.categoryId === product.categoryId && p.dpId != product.dpId; }).slice(0, 8);
                     relatedContainer.innerHTML = related.map(function(p) { return createProductCard(p); }).join('');
+                    relatedContainer.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+                        if (img.complete) img.classList.add('loaded');
+                        else { img.addEventListener('load', function() { this.classList.add('loaded'); }); img.addEventListener('error', function() { this.classList.add('loaded'); }); }
+                    });
                 }
             } else {
                 container.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--color-text-muted)">Product not found</p>';
