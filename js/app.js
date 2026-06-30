@@ -307,6 +307,77 @@ document.querySelector('.hero')?.addEventListener('mouseleave', () => {
 });
 
 // =============================================
+// Product Detail Page Renderer
+// =============================================
+function renderProductDetail(dpId) {
+    var container = document.getElementById('productDetail');
+    var relatedContainer = document.getElementById('relatedProducts');
+    if (!container) return;
+
+    // Fallback timeout
+    var fallbackTimer = setTimeout(function() {
+        if (!Store.products || Store.products.length === 0) {
+            container.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--color-text-muted)">Unable to load products. Please try refreshing the page.</p>';
+        }
+    }, 10000);
+
+    var pollTimer = setInterval(function() {
+        if (Store.products && Store.products.length > 0) {
+            clearInterval(pollTimer);
+            clearTimeout(fallbackTimer);
+            var product = Store.products.find(function(p) { return p.dpId == dpId; });
+
+            if (product) {
+                var catLabel = product.categoryLabel || '';
+                var subCatLabel = product.subCategoryLabel || '';
+                var productName = product.name || 'Product';
+                var brandName = product.brand || '';
+
+                // Update SEO meta
+                if (document.getElementById('seo-title')) {
+                    document.getElementById('seo-title').textContent = productName + ' - ' + (catLabel || 'Product') + ' | Vino & Beauté';
+                    document.getElementById('seo-description').setAttribute('content', (product.description || 'Buy ' + productName + ' at Vino & Beauté.').substring(0, 160));
+                    document.getElementById('seo-canonical').setAttribute('href', 'https://ellis-trading.shop/product.html?dpId=' + product.dpId);
+                    document.getElementById('seo-og-url').setAttribute('content', 'https://ellis-trading.shop/product.html?dpId=' + product.dpId);
+                    document.getElementById('seo-og-title').setAttribute('content', productName + ' - Vino & Beauté');
+                    document.getElementById('seo-og-image').setAttribute('content', product.image || 'https://ellis-trading.shop/images/og-home.png');
+                    document.getElementById('seo-tw-title').setAttribute('content', productName + ' - Vino & Beauté');
+                    document.getElementById('seo-tw-image').setAttribute('content', product.image || 'https://ellis-trading.shop/images/og-home.png');
+                }
+                var bcName = document.getElementById('breadcrumb-product-name');
+                if (bcName) bcName.textContent = productName;
+
+                // Build HTML safely (no template literals to avoid </script> issues)
+                var html = '';
+                html += '<figure class="product-gallery">';
+                html += '<img class="product-detail__image" src="' + (product.image || '') + '" alt="' + productName + '" width="600" height="600" loading="eager" id="mainProductImage" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22600%22><rect fill=%22%231a1423%22 width=%22600%22 height=%22600%22/><text fill=%22%239a93b0%22 x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2220%22>No Image</text></svg>\'">';
+                html += '</figure>';
+                html += '<article class="product-info">';
+                if (brandName) html += '<p class="product-detail__brand">' + brandName + '</p>';
+                html += '<h1 class="product-detail__name">' + productName + '</h1>';
+                if (subCatLabel) html += '<p class="product-detail__category" style="color:var(--color-text-muted);font-size:0.9rem;margin-bottom:8px;">' + catLabel + (subCatLabel ? ' > ' + subCatLabel : '') + '</p>';
+                html += '<p class="product-detail__price">HK$<span>' + (product.price || 0).toLocaleString() + '</span></p>';
+                html += '<div class="product-detail__desc" itemprop="description"><p>' + (product.description || 'Premium quality product from our curated collection.') + '</p></div>';
+                html += '<div class="product-cta" style="display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;">';
+                html += '<button class="btn btn--primary" onclick="Store.addToCart(' + product.dpId + '); toggleCart();">Add to Cart</button>';
+                html += '<a href="/category.html?cId=' + (product.categoryId || 2) + '" class="btn btn--outline">View Similar</a>';
+                html += '</div>';
+                html += '</article>';
+                container.innerHTML = html;
+
+                // Related products
+                if (relatedContainer) {
+                    var related = Store.products.filter(function(p) { return p.categoryId === product.categoryId && p.dpId != product.dpId; }).slice(0, 8);
+                    relatedContainer.innerHTML = related.map(function(p) { return createProductCard(p); }).join('');
+                }
+            } else {
+                container.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--color-text-muted)">Product not found</p>';
+            }
+        }
+    }, 100);
+}
+
+// =============================================
 // Init
 // =============================================
 
