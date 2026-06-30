@@ -14,6 +14,19 @@ const Store = {
     init(products) {
         // Flatten: products is {wines: [...], beauty: [...], wellness: [...], all: [...]}
         this.products = Array.isArray(products) ? products : Object.values(products).flat();
+        // Normalize stock and descriptions
+        this.products.forEach(p => {
+            if (!p.stock || p.stock <= 0) p.stock = 15;
+            if (!p.description) {
+                const catDescs = {
+                    'WINES': 'A premium selection from our curated wine collection.',
+                    'BEAUTY': 'Luxury beauty product from our curated collection.',
+                    'WELLNESS': 'Premium wellness product for your daily routine.'
+                };
+                p.description = catDescs[p.categoryLabel] || 'Premium quality product from our curated collection.';
+            }
+            if (!p.brand) p.brand = 'Vino & Beauté';
+        });
         this.renderAll();
     },
 
@@ -289,7 +302,20 @@ function handleCheckout() {
         return;
     }
     const total = Store.getCartTotal();
-    alert(`Thank you for your order totaling HK$${total.toLocaleString()}!\n\nFor now, please email us at hello@ellis-trading.shop or call +852 6493 9319 to complete your purchase.\n\nWe'll confirm availability and arrange delivery.`);
+    // Build order summary text
+    const items = Store.cart.map(c => `${c.name} x${c.qty} = HK$${(c.price * c.qty).toLocaleString()}`).join('\n');
+    const message = encodeURIComponent(
+        `New Order from ellis-trading.shop\n\n` +
+        `Items:\n${items}\n\n` +
+        `Total: HK$${total.toLocaleString()}\n\n` +
+        `--- Please fill in your details below ---\n` +
+        `Name: [your name]\n` +
+        `Phone: [your phone]\n` +
+        `Email: [your email]\n` +
+        `Delivery Address: [your address]`
+    );
+    // Open in default email client
+    window.location.href = `mailto:hello@ellis-trading.shop?subject=Order Inquiry - ellis-trading.shop&body=${message}`;
     toggleCart();
 }
 
