@@ -195,6 +195,7 @@
                 <span id="cartTotal">HK$0</span>
             </div>
             <button class="btn btn--primary btn--full" onclick="handleCheckout()">Proceed to Checkout</button>
+            <button class="btn btn--outline btn--full" style="margin-top:8px;" onclick="Store.cart=[]; localStorage.removeItem('vb_cart'); Store.updateCartUI();" aria-label="Clear cart">Clear Cart</button>
         </div>
     </aside>
 
