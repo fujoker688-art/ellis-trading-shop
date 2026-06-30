@@ -183,9 +183,12 @@
     <script src="js/products.js"></script>
     <script src="js/app.js"></script>
     <script>
+        console.log('PRODUCT page script START');
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('PRODUCT DOMContentLoaded fired');
             const params = new URLSearchParams(window.location.search);
             const dpId = Number(params.get('dpId'));
+            console.log('dpId:', dpId);
             const container = document.getElementById('productDetail');
 
             // Fallback timeout: show a message if products fail to load
@@ -196,10 +199,12 @@
             }, 10000);
 
             const check = setInterval(() => {
+                console.log('Poll: Store.products.length =', Store.products ? Store.products.length : 'undefined');
                 if (Store.products && Store.products.length > 0) {
                     clearInterval(check);
                     clearTimeout(timeout);
                     const product = Store.products.find(p => p.dpId == dpId);
+                    console.log('Product found:', product ? product.name : 'null');
                     const container = document.getElementById('productDetail');
                     const relatedContainer = document.getElementById('relatedProducts');
 

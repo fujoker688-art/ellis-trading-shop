@@ -12,6 +12,7 @@ const Store = {
     searchResults: [],
 
     init(products) {
+        console.log('Store.init called, products type:', typeof products);
         // Flatten category arrays (skip 'all' which duplicates wines+beauty+wellness)
         if (Array.isArray(products)) {
             this.products = products;
@@ -26,6 +27,7 @@ const Store = {
                 }
             }
         }
+        console.log('Store.products count:', this.products.length);
         // Normalize stock and descriptions
         this.products.forEach(p => {
             if (!p.stock || p.stock <= 0) p.stock = 40;
