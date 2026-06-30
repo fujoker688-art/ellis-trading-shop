@@ -1,5 +1,5 @@
 /* =============================================
-   Vino & Beauté — Application Script
+   Ellis Trading — Application Script
    ============================================= */
 
 // =============================================
@@ -39,7 +39,7 @@ const Store = {
                 };
                 p.description = catDescs[p.categoryLabel] || 'Premium quality product from our curated collection.';
             }
-            if (!p.brand) p.brand = 'Vino & Beauté';
+            if (!p.brand) p.brand = 'Ellis Trading';
         });
         this.renderAll();
     },
@@ -346,13 +346,13 @@ function renderProductDetail(dpId) {
 
                 // Update SEO meta
                 if (document.getElementById('seo-title')) {
-                    document.getElementById('seo-title').textContent = productName + ' - ' + (catLabel || 'Product') + ' | Vino & Beauté';
-                    document.getElementById('seo-description').setAttribute('content', (product.description || 'Buy ' + productName + ' at Vino & Beauté.').substring(0, 160));
+                    document.getElementById('seo-title').textContent = productName + ' - ' + (catLabel || 'Product') + ' | Ellis Trading';
+                    document.getElementById('seo-description').setAttribute('content', (product.description || 'Buy ' + productName + ' at Ellis Trading.').substring(0, 160));
                     document.getElementById('seo-canonical').setAttribute('href', 'https://ellis-trading.shop/product.html?dpId=' + product.dpId);
                     document.getElementById('seo-og-url').setAttribute('content', 'https://ellis-trading.shop/product.html?dpId=' + product.dpId);
-                    document.getElementById('seo-og-title').setAttribute('content', productName + ' - Vino & Beauté');
+                    document.getElementById('seo-og-title').setAttribute('content', productName + ' - Ellis Trading');
                     document.getElementById('seo-og-image').setAttribute('content', product.image || 'https://ellis-trading.shop/images/og-home.png');
-                    document.getElementById('seo-tw-title').setAttribute('content', productName + ' - Vino & Beauté');
+                    document.getElementById('seo-tw-title').setAttribute('content', productName + ' - Ellis Trading');
                     document.getElementById('seo-tw-image').setAttribute('content', product.image || 'https://ellis-trading.shop/images/og-home.png');
                 }
                 var bcName = document.getElementById('breadcrumb-product-name');
