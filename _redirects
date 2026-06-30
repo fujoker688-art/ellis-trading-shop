@@ -1,3 +1,2 @@
-# Redirect www to apex domain
-ellis-trading.shop
-/index.html
+# Redirect www to apex
+https://www.ellis-trading.shop/*  https://ellis-trading.shop/:splat  301

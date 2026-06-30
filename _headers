@@ -1,31 +1,27 @@
-# Security Headers for GitHub Pages / ellis-trading.shop
+# Security Headers — ellis-trading.shop
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src https://www.speedmalls.com data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  X-XSS-Protection: 1; mode=block
 
-# HSTS — enforce HTTPS for 2 years, include subdomains, preload
-Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+# HTML — no cache (so updates are visible immediately)
+*.html
+  Cache-Control: no-cache, must-revalidate
 
-# Content Security Policy — strict, no inline scripts except where necessary
-Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src https://www.speedmalls.com https://images.unsplash.com data: https://ellis-trading.shop; connect-src 'self' https://ellis-trading.shop; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+# JS & CSS — short cache during development
+css/*.css
+  Cache-Control: max-age=86400
+js/*.js
+  Cache-Control: max-age=86400
 
-# Prevent MIME-type sniffing
-X-Content-Type-Options: nosniff
+# Images — longer cache
+images/*
+  Cache-Control: max-age=2592000
 
-# Clickjacking protection
-X-Frame-Options: DENY
-
-# Referrer policy
-Referrer-Policy: strict-origin-when-cross-origin
-
-# Permissions policy
-Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
-
-# X-XSS Protection (legacy)
-X-XSS-Protection: 1; mode=block
-
-# Cache control for static assets (1 year)
-/cache-control
-/: max-age=0, must-revalidate
-*.html: no-cache, must-revalidate
-css/*.css: max-age=31536000, immutable
-js/*.js: max-age=31536000, immutable
-images/*: max-age=31536000, immutable
-*.xml: no-cache
+# XML
+*.xml
+  Cache-Control: no-cache
